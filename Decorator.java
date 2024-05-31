@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 装饰器模式，为IntervalSet增加新功能，需要传入基础的IntervalSet的实现
+ * Decorator模式，为Set增加新功能，需要传入基础的Set的实现
  * @param <L> 元素类型，应与传入的IntervalSet的类型相同，为不可变类型
  */
-public abstract class Decorator<L> implements IntervalSet<L> {
-    protected final IntervalSet<L> intervalSet;//委派给别人
-    public Decorator(IntervalSet<L> intervalSet){
+public abstract class Decorator<L> implements Set<L> {
+    protected final Set<L> intervalSet;//委派给别人
+    public Decorator(Set<L> intervalSet){
         this.intervalSet = intervalSet;
     }
 
