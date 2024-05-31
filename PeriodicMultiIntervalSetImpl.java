@@ -48,32 +48,4 @@ public class PeriodicMultiIntervalSetImpl<L>{
             cStart+=periodTime;
         }
     }
-
-    @Override
-    public long[] checkCycle(L label) throws IOException{
-        if(!labels().contains(label)) throw new IOException("事件不存在");
-        long[] result=new long[4];
-        result[0]=-1;result[1]=-1;result[2]=-1;result[3]=-1;
-        boolean flag=true;
-        List<Integer> sorted=intervals(label).sortedLabels();
-        for(int i=0;i<sorted.size()-1;i++){
-            long thisStart=intervals(label).start(sorted.get(i))%periodTime;
-            long thisEnd=intervals(label).end(sorted.get(i))%periodTime;
-            long thisCycle=intervals(label).start(sorted.get(i))/periodTime;
-            long nextStart=intervals(label).start(sorted.get(i+1))%periodTime;
-            long nextEnd=intervals(label).end(sorted.get(i+1))%periodTime;
-            long nextCycle=intervals(label).start(sorted.get(i+1))/periodTime;
-            if(!(thisStart==nextStart&&thisEnd==nextEnd&&thisCycle+1==nextCycle))
-            {
-                flag=false;break;
-            }
-        }
-        if(flag){
-            result[0]=intervals(label).start(sorted.get(0))/periodTime+1;
-            result[1]=sorted.size();
-            result[2]=intervals(label).start(sorted.get(0))%periodTime;
-            result[3]=intervals(label).end(sorted.get(0))%periodTime;
-        }
-        return result;
-    }
 }
