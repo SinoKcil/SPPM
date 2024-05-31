@@ -6,9 +6,7 @@ import multi.CommonMultiIntervalSet;
 import java.io.IOException;
 import java.util.List;
 
-public class PeriodicMultiIntervalSetImpl<L>
-    extends CommonMultiIntervalSet<L>
-    implements PeriodicMultiIntervalSet<L>{
+public class PeriodicMultiIntervalSetImpl<L>{
     private final int periodTime;
     private final int cycleNum;
     /*
