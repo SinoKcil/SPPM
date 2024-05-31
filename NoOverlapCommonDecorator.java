@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * 为IntervalSet增加不可重叠的特性
+ * 为Set增加不可重叠的特性
  * <p>若一个事件标签结束前，另一个事件标签开始了，则存在重叠
- * @param <L> IntervalSet的类型，应为不可变类型
+ * @param <L> Set的类型，应为不可变类型
  */
 public class NoOverlapCommonDecorator<L>
         extends Decorator<L>
-        implements IntervalSet<L> {
+        implements Set<L> {
     /*
     * Abstract function:
     *   AF=将传入的MultiIntervalSet装饰为各事件不能重叠的时间轴
